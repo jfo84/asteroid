@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create!(user_params)
+    @user = User.create!(allowed_params)
     respond_to do |format|
       format.json { render json: @user }
     end
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:user) # TODO: Slice only needed params
+  def allowed_params
+    params.require(:user)
   end
 end

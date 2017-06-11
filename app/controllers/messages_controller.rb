@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
 
   # The index call will always be scoped to the conversation_id
   def index
-    @messages = Message.where(conversation_id: params[:conversation_id])
+    @messages = Message.where(conversation_id: allowed_params[:conversation_id])
     respond_to do |format|
       format.json { render json: @messages }
     end
