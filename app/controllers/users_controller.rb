@@ -8,7 +8,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    User.create!(user_params)
+    @user = User.create!(user_params)
+    respond_to do |format|
+      format.json { render json: @user }
+    end
   end
 
   private
