@@ -6,13 +6,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create!(allowed_params)
+    @user = User.create!
     render json: @user
-  end
-
-  private
-
-  def allowed_params
-    params.require(:user)
   end
 end

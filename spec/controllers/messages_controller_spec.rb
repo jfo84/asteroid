@@ -13,9 +13,25 @@ RSpec.describe MessagesController, type: :controller do
       get(:index, params: { conversation_id: @conversation.id })
     end
 
-    it "has the correct response body" do
+    it 'has the correct response body' do
       expect(response.response_code).to eq 200
       expect(response.body).to eq [@message_one, @message_two].to_json
+    end
+  end
+
+  describe '#create' do
+
+    before do
+      @user_one = User.create!
+      @user_two = User.create!
+      @conversation = Conversation.create!(sender_id: @user_one.id, receiver_id: @user_two.id)
+
+      get(:create, params: { message: { conversation_id: @conversation.id } })
+    end
+
+    it 'creates the message' do
+      expect(response.response_code).to eq 200
+      expect(Message.where(conversation_id: @conversation.id).first).to be_a Message
     end
   end
 end
