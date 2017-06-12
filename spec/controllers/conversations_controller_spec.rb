@@ -29,7 +29,10 @@ RSpec.describe ConversationsController, type: :controller do
     it 'creates the message' do
       expect(response.response_code).to eq 200
       expect(Conversation.where(sender_id: @user_one.id).first).to be_a Conversation
+      expect(Conversation.where(sender_id: @user_two.id).first).to be nil
+
       expect(Conversation.where(receiver_id: @user_two.id).first).to be_a Conversation
+      expect(Conversation.where(receiver_id: @user_one.id).first).to be nil
     end
   end
 end
