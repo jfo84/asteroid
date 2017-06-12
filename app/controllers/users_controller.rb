@@ -2,16 +2,12 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    respond_to do |format|
-      format.json { render json: @users }
-    end
+    render json: @users
   end
 
   def create
     @user = User.create!(allowed_params)
-    respond_to do |format|
-      format.json { render json: @user }
-    end
+    render json: @user
   end
 
   private
