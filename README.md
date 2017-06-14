@@ -1,24 +1,9 @@
-# README
+# Asteroid
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Features:
 
-Things you may want to cover:
+* Data modeling of users, conversations, and messages and their database relationships
 
-* Ruby version
+* Controllers serve JSON in the JSON API spec, common for powering modern front end frameworks
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Rspec testing suite for GET and INDEX calls to users, conversations, and messages
